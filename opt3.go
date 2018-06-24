@@ -5,25 +5,24 @@ import (
 	"log"
 	"os"
 	"strconv"
-	"strings"
 	"time"
 )
 
-func concat(word string, n int) string {
-	var sb []string
+func concat(word []byte, n int) []byte {
+	var sb []byte
 
 	for i := 0; i < n; i++ {
-		sb = append(sb, word)
+		sb = append(sb, word...)
 	}
-	return strings.Join(sb, "")
+	return sb
 }
 
 func main() {
 	if len(os.Args) != 4 {
-		log.Fatal("./opt <word> <n> <repeat>")
+		log.Fatal("./opt3 <word> <n> <repeat>")
 	}
 
-	word := os.Args[1]
+	word := []byte(os.Args[1])
 	n, _ := strconv.ParseInt(os.Args[2], 10, 64)
 	repeat, _ := strconv.ParseInt(os.Args[3], 10, 64)
 

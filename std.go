@@ -9,11 +9,11 @@ import (
 	"time"
 )
 
-func concat(word string, n int) string {
+func concat(word []byte, n int) string {
 	var sb strings.Builder
 
 	for i := 0; i < n; i++ {
-		sb.WriteString(word)
+		sb.Write(word)
 	}
 	return sb.String()
 }
@@ -23,7 +23,7 @@ func main() {
 		log.Fatal("./std <word> <n> <repeat>")
 	}
 
-	word := os.Args[1]
+	word := []byte(os.Args[1])
 	n, _ := strconv.ParseInt(os.Args[2], 10, 64)
 	repeat, _ := strconv.ParseInt(os.Args[3], 10, 64)
 
